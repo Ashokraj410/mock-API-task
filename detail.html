@@ -1,35 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="det.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Student Details</title>
+  <link rel="stylesheet" href="det.css">
 </head>
 <body>
-    <header>
-        <img src="image/logo 2.avif" alt="logo 2">
-        <h2>Students<span>Details</span></h2>
-        <button><a href="index.html">Home</a></button>
-    </header>
-    <table id="userTable">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Gender</th>
-                <th>Department</th>
-                <th>cutoff</th>
-                <th>Phonenumber</th>
-                <th>city</th>
-                <th>country</th>
-                <th>imageUrl</th>
-                <th>Edit</th>
-                <th>Delete</th>
-            </tr>
-        </thead>
-        <tbody id="tableBody">
-        </tbody>
-    </table>
-    
+  <header>
+    <img src="image/logo 1.jpg" alt="logo" />
+    <h2>Students <span>Details</span></h2>
+    <button onclick="location.href='index.html'">Home</button>
+  </header>
+  <table id="userTable">
+    <thead>
+      <tr>
+        <th class="id-row">ID</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Department</th>
+        <th>Gender</th>
+        <th>City</th>
+        <th>Country</th>
+        <th>Image</th>
+        <th>CutOff</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+  </table>
+
+  <script>
+    const usersUrl = "https://687de135c07d1a878c304fa7.mockapi.io/users";
+    const tbody = document.getElementById("tableBody");
+
+
+    async function load() {
+      const response = await fetch(usersUrl);
+      const users = await response.json();
+
+      tbody.innerHTML = ""; // clear previous rows 
+
+      users.forEach(user => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td class="id-row">${user.id}</td>
+          <td>${user.name}</td>
+          <td>${user.phonenumber}</td>
+          <td>${user.department}</td>
+          <td>${user.gender}</td>
+          <td>${user.city}</td>
+          <td>${user.country}</td>
+          <td class="image"><img src="${user.image}" alt="photo" /></td>
+          <td>${user.cutoff}</td>
+          <td><button class="edit-btn">Edit</button></td>
+          <td><button class="delete-btn">Delete</button></td>
+        `;
+
+        // Edit button handler
+        tr.querySelector(".edit-btn").addEventListener("click", () => {
+          alert("can you confirm that you update the ID?");
+           // Redirect  to edit html page 
+          location.href = `edit.html?id=${user.id}`;
+        });
+
+        // Delete button handler
+        tr.querySelector(".delete-btn").addEventListener("click", async () => {
+          if (confirm("Are you sure you want to delete this user?")) {
+            await fetch(`${usersUrl}/${user.id}`, { method: "DELETE" });
+            load(); // reload table
+          }
+        });
+
+        tbody.appendChild(tr);
+      });
+    }
+
+    // Load table on page load
+    window.addEventListener("DOMContentLoaded", load);
+  </script>
 </body>
 </html>

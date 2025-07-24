@@ -8,7 +8,6 @@ const getUsers=async()=>{
 }
 
 
-
 document.getElementById('frm').addEventListener('submit',async function(e){
     e.preventDefault();
     
@@ -50,7 +49,7 @@ document.getElementById('frm').addEventListener('submit',async function(e){
         nameError.innerText="Name is required!";
         isValid=false;
     }
-    if(phoneNumber===""||!/^\+91[-\s]?[6-9]\d{9}$/.test(phoneNumber)){
+    if(phoneNumber===""||!(/^(\+91[\-\s]?|0?91|0)?[6-9]\d{9}$/).test(phoneNumber)){
         phonenumberError.innerText="Enter valid 10 digit phonenumber"
         isValid=false;
     }
@@ -99,7 +98,7 @@ document.getElementById('frm').addEventListener('submit',async function(e){
         body: JSON.stringify(data)
     })
     .then(res => res.json())
-    .then(result => {
+    .then(data => {
         alert("User created successfully!");
         document.getElementById('frm').reset();
     })
@@ -108,7 +107,6 @@ document.getElementById('frm').addEventListener('submit',async function(e){
 
 
 })
-
 
 //gender select function
 const genderBoxes=document.querySelectorAll('input[type="checkbox"][name="gender"]');

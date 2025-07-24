@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <form action="" id="frm">
         <label for="text">Name</label>
         <input type="text"  id="name" placeholder="Enter your name">
@@ -22,7 +23,7 @@
         </div>
         <label>Department</label>
         <select id="department">
-            <option>Department</option>
+            <option value="">Department</option>
             <option value="Civil">Civil</option>
             <option value="Mech">Mech</option>
             <option value="ECE">ECE</option>
@@ -46,7 +47,11 @@
         <input type="url" id="image" pattern="https?://.+" title="Start with http:// or https://" placeholder=" Enter your image URL">
         <span id="image-error"></span>        
         <button class="btn" type="submit">Submit</button>
+        <div class="info">
+          <a href="detail.html">Details</a>
+        </div>
     </form>
+    
     <script src="index.js"></script>
 </body>
 </html>

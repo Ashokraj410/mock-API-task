@@ -3,6 +3,12 @@
     padding: 0;
     box-sizing:border-box;
 }
+body{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
 header{
     display: flex;
     justify-content: space-around;
@@ -11,10 +17,15 @@ header{
     background: #ccc;
     align-items: center;
 }
-img{
-    width: 80px;
-    height: 80px;
-    border-radius: 13px;
+header img{
+    width: 100px;
+    cursor: pointer;
+    height: 90px;
+    border-radius: 10px;
+}
+table .image img{
+    max-width: 60px;
+    max-height: 50px;
     cursor: pointer;
 }
 header span{
@@ -23,12 +34,103 @@ header span{
     font-size: 30px;
     text-shadow: 3px 2px 1px #f6f6f6;
 }
-table{
-    width: 85%;
-    border-collapse: collapse;
-    background: #ababab;
-    margin-top: 30px;
-    height: auto;
-    justify-self: center;
-    padding: 10px;
+header button{
+    width: 110px;
+    height: 35px;
+    border-radius: 9px;
+    border: none;
+    background: transparent;
+    font-weight: 900;
+    font-family: 'Times New Roman', Times, serif;
+    outline: none;
+    font-size: 20px;
+    cursor: pointer;
+
 }
+table{
+    width: 95%;
+    align-self: center;
+    border-collapse: collapse;
+    margin-top: 20px;
+    height: 100%;
+    text-align: inherit;
+    outline: 1px solid #ccc;
+}
+
+table .id-row{
+    text-align: left;
+    padding-left: 10px;
+}
+thead{
+    text-align: left;
+    background: #ccc;
+    height: 40px;
+    padding-top: 30px;
+    font-size: 20px;
+}
+table button{
+    width: 60px;
+    border-radius: 4px;
+    outline: none;
+    height: 20px;
+    border: 2px solid #ccc;
+    font-size: 13px;
+    cursor: pointer;
+}
+.edit-btn{
+    background: skyblue;
+    border: 1px solid blue;
+}
+.delete-btn{
+    border: 1px solid red;
+    background: rgb(246, 188, 167);
+}
+tbody tr{
+    height: 40px;
+    font-size: 17px;
+}
+
+
+@media screen and (max-width: 890px) {
+  
+  thead th{
+    display:block;
+    height: auto;
+    padding-bottom: 20px;
+    margin-left: 40%;
+    padding-top: 20px;
+    font-size: 26px;
+  }
+  thead tr{
+    display: block;
+    border-bottom: 2px solid#b17474;
+
+  }
+  tbody tr {
+    display: block;
+    height: auto;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ccc;
+    
+
+  }
+  tbody td{
+    font-size: 25px;
+    padding-top: 12px;
+    display: block;
+    text-wrap: rap;
+    margin-left: 40%;
+
+}
+  tbody button {
+    width: 30%;
+    height: 30px;
+    font-size: 18px;
+  }
+  .id-row{
+   padding-left: 0px;
+
+  }
+  
+}
+
